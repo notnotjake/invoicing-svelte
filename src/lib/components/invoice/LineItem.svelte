@@ -1,24 +1,26 @@
 <script>
-	let price = '2,145.00'
+	export let billItem	
+	export let currency
+	
 </script>
 
 <div class="item">
 	<div class="product container">
-		<h3>Web Hosting and Maintenance</h3>
-		<p class="description">Description of the work performed</p>
+		<h3>{billItem.title}</h3>
+		<p class="description">{billItem.description}</p>
 	</div>
 	<div class="price container">
 		<div class="details">
-			<h3>3<span class="unit">HRS</span></h3>
-			<p class="description">$25/hr</p>
+			<h3>{billItem.qty}<span class="unit">{billItem.unit}</span></h3>
+			<p class="description">{billItem.unitNote}</p>
 		</div>
-		<h3>${price}</h3>
+		<h3>{currency(billItem.price)}</h3>
 	</div>
 </div>
 
 <style lang="scss">
 	div.item {
-		--bottom-gap: 1.4rem;
+		--bottom-gap: 1.2rem;
 		
 		display: flex;
 		justify-content: space-between;
@@ -42,6 +44,7 @@
 		}
 		span.unit {
 			font-size: 0.85rem;
+			text-transform: uppercase;
 		}
 		
 		div.product {

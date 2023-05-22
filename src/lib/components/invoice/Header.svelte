@@ -1,8 +1,5 @@
 <script>
-	let customer = 'AH'
-	let project = 'L5'
-	let invoice = '012'
-	let date = 'Sep 20, 2023'
+	export let data
 	
 	let env = 'web'
 	
@@ -28,10 +25,10 @@
 	</div>
 	
 	<div class="info">
-		<h2>Invoice</h2>
-		<p id="customer">{customer}</p>
-		<p id="id"><strong>{project}</strong>{invoice}</p>
-		<p id="date" class="emphasis">{date}</p>
+		<h2>{data.type}</h2>
+		<p id="customer">{data.customer.id}</p>
+		<p id="id"><strong>{data.project}</strong>{data.bill.id}</p>
+		<p id="date" class="emphasis">{data.date.string}</p>
 	</div>
 </div>
 
@@ -62,6 +59,7 @@
 			font-size: 1.6rem;
 			margin-right: 1.4rem;
 			letter-spacing: -0.0163em;
+			text-transform: capitalize;
 		}
 		#customer, #id {
 			font-family: 'Courier', 'Courier Prime', monospace;

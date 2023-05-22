@@ -1,13 +1,13 @@
 <script>
-	const action = "billed"
-	let price = {
-		dollar: '1,250',
-		cents: '00'
+	export let data
+	export let currency
+	
+	let action = ''
+	if (data.type === 'invoice') {
+		action = 'billed to'
 	}
-	let cust = {
-		name: 'Advance Automation & Security',
-		address: '14543 Bud Lane, Glen Allen, VA 23059',
-		contact: '(804) 798 4606'
+	if (data.type === 'estimate') {
+		action = 'estimate for'
 	}
 </script>
 
@@ -18,8 +18,8 @@
 		</svg>
 	</span>
 	<div class="wrapper">
-		<p class="amount"><span class="dollar">${price.dollar}.</span><span class="cent">{price.cents}</span> {action.toUpperCase()} TO <span class="customer">{cust.name}</span></p>
-		<p class="customer-info">{cust.address} • {cust.contact}</p>
+		<p class="amount"><span class="dollar">{currency(data.bill.due)}.</span><span class="cent">{data.bill.due}</span> {action.toUpperCase()} <span class="customer">{data.customer.name}</span></p>
+		<p class="customer-info">{data.customer.address} • {data.customer.contact}</p>
 	</div>
 	<span class="border">
 		<svg xmlns="http://www.w3.org/2000/svg">

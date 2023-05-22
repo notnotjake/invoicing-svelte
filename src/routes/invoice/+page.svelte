@@ -6,45 +6,80 @@
 	import Payments from '$lib/components/invoice/Payments.svelte'
 	
 	const width = '33rem' // 42rem is pretty good
-	const context = 'web' // Options: web, mail, print
+	let context = 'web' // Options: web, mail, print
 	
 	const data = {
-		info: {
-			type: 'invoice',
-			date: {
-				iso: '9/20/2023',
-				string: 'sep 20, 2023',
-				due: 'oct 20, 2023'
-			},
+		type: 'invoice',
+		date: {
+			iso: '5/22/2023',
+			string: 'may 22, 2023'
 		},
 		customer: {
 			id: 'AH',
 			name: 'Advance Automation & Security',
 			address: '14543 Bud Lane, Glen Allen VA 23059',
-			contact: '(305) 555 8888',
-			paymentPref: 'online'
+			contact: '(804) 687 6884',
+			paymentPref: 'check'
 		},
+		project: 'L5',
 		bill: {
+			id: '013',
 			items: [
 				{
-					title: 'Web Hosting and Maintenance',
-					description: 'Description of the work done',
+					title: 'Hosting and Maintenance',
+					description: 'Email and Website',
 					unit: 'Mo',
 					qty: 1,
-					unitNote: 'Monthly',
+					unitNote: 'Billed Monthly',
 					price: 245.00
 				}
 			],
-			sum: {
-				subtotal: 123.00,
-				payments: 0,
-				due: 123.00
-			}
+			credits: [
+				// {
+				// 	label: '5% Discount',
+				// 	subtotal: 522.5,
+				// 	date: '',
+				// 	amount: -25
+				// },
+				// {
+				// 	label: 'Deposit (50%)',
+				// 	date: 'Feb 12',
+				// 	amount: -245
+				// }
+			],
+			due: 245.00,
+			dateDue: 'june 22, 2023'
 		},
 		payment: {
-			url: 'payment url',
+			url: '/',
+			check: {
+				valid: true,
+				payable: 'LightDance Design',
+				mailto: '14543 Bud Ln<br/>Glen Allen VA 23059'
+			},
+			ach: {
+				bank: 'Capital One',
+				routing: '41414141414',
+				account: '41414141414141414'
+			}
 		}
 	}
+	
+	const currency = function ( n ) {
+		let s = '$' + parseInt(n).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})
+		return s
+	}
+	
+	
+	
+	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	Rudamentary Drag/Drop
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+	function handleDragStart (e) {
+		console.log('test')
+	}
+	
+	
 </script>
 
 <div class="card" style="--width:{width};">
@@ -53,19 +88,29 @@
 		<div class="gradient"></div>
 	</div>
 	<div class="container">
-		<Header />
-		<Summary />
+		<Header {data}  />
+		<Summary {data} {currency} />
+			
 		
 		<div class="bill">
-			<LineItem />
-			<LineItem />
+			{#each data.bill.items as billItem }
+				<LineItem {billItem} {currency}  />
+			{/each}
 		</div>
 		
-		<Sum {data} />
-		<!-- <Payments /> -->
+		<Sum bill={data.bill} {currency} />
+		<Payments {context} {data} />
 		
 		<p class="emphasis">Thank You!</p>
 	</div>
+</div>
+
+<div id="controls" 
+	draggable=true
+	on:dragstart={handleDragStart}
+>
+	<div class="drag-handle"></div>
+	<h1>Edit</h1>
 </div>
 
 
@@ -79,6 +124,30 @@
 		color: #C17811;
 		text-align: center;
 		padding: 2.3rem 0;
+	}
+	
+	#controls {
+		position: absolute;
+		top: 2rem;
+		left: 2rem;
+		width: 16rem;
+		min-height: 3rem;
+		background: hsl(0,0%,100%);
+		border-radius: 0.5rem;
+		border: 0.08rem solid hsl(0,0%,89%);
+		
+		div.drag-handle {
+			width: 3rem;
+			height: 0.4rem;
+			margin: 0.5rem auto;
+			background: #737373;
+			border-radius: 2rem;
+			cursor: grab;
+			transition: background 0.1s;
+		}
+		div.drag-handle:hover {
+			background: #373634;
+		}
 	}
 	
 	div.card {

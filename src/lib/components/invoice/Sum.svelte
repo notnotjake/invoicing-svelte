@@ -1,61 +1,29 @@
-<script>
-	export let data
+<script>	
+	export let bill
+	export let currency
 	
-	const status = {
-		paymentsHistory: 0,
-		paid: true,
-		due: 'OCT 20, 2023'
-	}
-	let totalComponents = [
-		{
-			text: 'Deposit (50%)',
-			date: 'Feb 12',
-			amount: '-245.00'
-		}
-	]
-	let amountDue = 245.00
-	
-	
-	const sum = {
-		
-	}
 </script>
 
-<!-- {#if status.paid }
-	<p>Paid. Thanks</p>
-{:else}
-	
-{/if} -->
-
 <div class="container">
-	{#each totalComponents as {text, date, amount}}
-		{#if amount < 0}
-			<div class="credit">
-				<p>{text} <span>{date}</span></p>
-				<p>({amount * -1})</p>
-			</div>
-		{:else}
-			<div>
-				<p>{text}</p>
-				<p>{amount}</p>
-			</div>
-		{/if}
+	{#each bill.credits as {label, date, subtotal, amount}}
+		<div>
+			<p>{label} <span>{date ? date : ''}{subtotal ? 'Subtotal ' + currency(subtotal) : ''}</span></p>
+			{#if amount < 0}
+				<p class="credit">({currency(amount * -1)})</p>
+			{:else}
+				<p>{currency(amount)}</p>
+			{/if}
+		</div>
 	{/each}
 	
-	<div>
+	<div class="due">
 		<p>Amount Due</p>
-		<p>{data.bill.sum.due}</p>
-	</div>
-	
-	<div>
-		<p>Please pay before <span>{data.info.date.due}</span></p>
-		
-		<a href="{data.payment.url}">
-			<div>
-				<p>Pay Online</p>
-				<p>Link in Email</p>
-			</div>
-		</a>
+		<span>
+			<svg height="3px" xmlns="http://www.w3.org/2000/svg">
+			  <path fill-rule="evenodd" stroke-dasharray="4,10" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M2 1.5h9999"/>
+			</svg>
+		</span>
+		<p class="amount">{currency(bill.due)}</p>
 	</div>
 </div>
 
@@ -68,10 +36,47 @@
 			width: 100%;
 			display: flex;
 			justify-content: space-between;
+			padding-bottom: 0.15rem;			
+			p {
+				font-size: 1rem;
+				line-height: 1.2;
+				letter-spacing: -0.014em;
+				margin-bottom: 0.3rem;
+				font-weight: 500;
+			}
+			span {
+				font-style: italic;
+				opacity: 0.6;
+				font-weight: 400;
+				font-size: 0.95rem;
+			}
+			p.credit {
+				color: #09C726;
+			}
 		}
-	}
-	
-	div.credit {
-		color: green;
+		div.due {
+			padding: 0.8rem 0;
+			display: flex;
+			align-items: center;
+			gap: 1.2rem;
+			p {
+				font-size: 1.2rem;
+				font-weight: 600;
+				letter-spacing: -0.011em;
+				flex-shrink: 0;
+			}
+			p.amount {
+				font-weight: 500;
+				font-size: 1.25rem;
+			}
+			span {
+				flex-grow: 1;
+				svg {
+					width: 100%;
+					height: 8px;
+					stroke: rgba(68, 68, 68, 0.35);
+				}
+			}
+		}
 	}
 </style>
