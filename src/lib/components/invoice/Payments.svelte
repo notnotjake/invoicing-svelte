@@ -1,6 +1,7 @@
 <script>
 	export let context
 	export let data
+	
 </script>
 
 <div class="payments-wrapper">
@@ -9,7 +10,7 @@
 	</div>
 	
 	<a class="primary" href="{data.payment.url}">Pay Now</a>
-	<a href="">Print Invoice</a>
+	<a href="javascript:window.print()">Print Invoice</a>
 	<a href="mailto:billing@lightdance.design?subject=Invoice {data.customer.id}-{data.project}{data.bill.id} - Question">Contact</a>
 	
 	<summary>	

@@ -9,6 +9,15 @@
 	if (data.type === 'estimate') {
 		action = 'estimate for'
 	}
+	
+	function dollars ( s ) {
+		
+		return d
+	}
+	function cents ( s ) {
+		
+		return c
+	}
 </script>
 
 <div>
