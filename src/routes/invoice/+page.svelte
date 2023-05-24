@@ -32,28 +32,28 @@
 					qty: 1,
 					unitNote: 'Billed Monthly',
 					price: 245.00
+				},
+				{
+					title: 'Tech Consulting',
+					description: 'Training and support on new platforms',
+					unit: 'Hrs',
+					qty: 2.5,
+					unitNote: '$70/hr',
+					price: 175
 				}
-				// {
-				// 	title: 'Tech Consulting',
-				// 	description: 'Training and support on new platforms',
-				// 	unit: 'Hrs',
-				// 	qty: 2.5,
-				// 	unitNote: '$70/hr',
-				// 	price: 175
-				// }
 			],
 			credits: [
-				// {
-				// 	label: '5% Discount',
-				// 	subtotal: 522.5,
-				// 	date: '',
-				// 	amount: -25
-				// },
-				// {
-				// 	label: 'Deposit (50%)',
-				// 	date: 'Feb 12',
-				// 	amount: -245
-				// }
+				{
+					label: '5% Discount',
+					subtotal: 522.5,
+					date: '',
+					amount: -25
+				},
+				{
+					label: 'Deposit (50%)',
+					date: 'Feb 12',
+					amount: -245
+				}
 			],
 			due: 3245.99,
 			dateDue: 'june 22, 2023'
@@ -100,7 +100,7 @@
 		<Summary {data} {currency} />
 			
 		
-		<div class="bill">
+		<div class="bill wrapper narrow">
 			{#each data.bill.items as billItem }
 				<LineItem {billItem} {currency}  />
 			{/each}
@@ -109,7 +109,7 @@
 		<Sum bill={data.bill} {currency} />
 		<Payments {context} {data} />
 		
-		<p class="emphasis">Thank You!</p>
+		<p class="emphasis thank-you">Thank You!</p>
 	</div>
 </div>
 
@@ -119,9 +119,22 @@
 		background: #F1F2F4;
 	}
 	
-	.emphasis {
+	:global(.emphasis) {
 		text-transform: uppercase;
 		color: #C17811;
+	}
+	:global(div.wrapper.narrow) {
+		padding-left: 2.5rem;
+		padding-right: 2.5rem;
+	}
+	@media (max-width: 50rem) {
+		:global(div.wrapper.narrow) {
+			padding-left: 1rem;
+			padding-right: 1rem;
+		}
+	}
+	
+	p.thank-you {
 		text-align: center;
 		padding: 2.3rem 0;
 	}
@@ -144,7 +157,8 @@
 		}
 		
 		div.bill {
-			padding: 1.6rem 2.5rem 1rem;
+			padding-top: 1.6rem;
+			padding-bottom: 1rem;
 		}
 		
 		div.card-accent {

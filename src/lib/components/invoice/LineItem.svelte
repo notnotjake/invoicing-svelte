@@ -93,13 +93,24 @@
 		border-radius: 1rem;
 		background: hsla(0, 0%, 0%, 0.13);
 	}
-	@media (max-width:80rem) {
-		div.item div.price div.details {
-			flex-direction: row;
-			align-items: flex-end;
-			justify-content: flex-end;
-			gap: 2rem;
-			
+	
+	@media (max-width:50rem) {
+		div.item div.price {
+			flex-direction: column-reverse;
+			h3.price {
+				flex-basis: unset;
+			}
+			div.details {
+				flex-direction: row;
+				justify-content: flex-end;
+				align-items: center;
+				gap: 0.4rem;
+				h3, p {
+					/* height: 1.2rem; */
+					line-height: 1;
+					margin-bottom: 0;
+				}
+			}
 		}
 	}
 </style>

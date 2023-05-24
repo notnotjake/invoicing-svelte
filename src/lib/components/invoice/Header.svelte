@@ -9,7 +9,7 @@
 	}
 </script>
 
-<div id="header">
+<div id="header" class="wrapper narrow">
 	<h1 class="logo">Light<em>Dance</em></h1>
 	
 	<div class="web-presentation">
@@ -33,9 +33,7 @@
 </div>
 
 <style lang='scss'>
-	#header {
-		padding: 0 2.5rem;
-	}
+	
 	h1.logo {
 		padding-top: 1.35rem;
 		padding-bottom: 2.8rem;

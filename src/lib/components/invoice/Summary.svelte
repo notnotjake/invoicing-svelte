@@ -1,6 +1,5 @@
 <script>
 	export let data
-	// export let currency
 	
 	let action = ''
 	if (data.type === 'invoice') {
@@ -18,7 +17,6 @@
 	function cents ( s ) {
 		let c = parseFloat(s).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})
 		c = c.split('.')
-		console.log(c)
 		return c[1]
 	}
 </script>
@@ -29,7 +27,7 @@
 		  <path fill-rule="evenodd" stroke-dasharray="5,3" stroke-linecap="round" stroke-linejoin="round" d="M1 1h9999"/>
 		</svg>
 	</span>
-	<div class="wrapper">
+	<div class="wrapper narrow">
 		<p class="amount"><span class="dollar">${dollars(data.bill.due)}.</span><span class="cent">{cents(data.bill.due)}</span> {action.toUpperCase()} <span class="customer">{data.customer.name}</span></p>
 		<p class="customer-info">{data.customer.address} • {data.customer.contact}</p>
 	</div>
@@ -45,7 +43,8 @@
 		background: hsla(211, 85%, 93%, 0.16);
 		letter-spacing: -0.017em;
 		.wrapper {
-			padding: 0.6rem 2.5rem;
+			padding-top: 0.6rem;
+			padding-bottom: 0.6rem;
 		}
 		span.border {
 			--line-width: 0.06em;

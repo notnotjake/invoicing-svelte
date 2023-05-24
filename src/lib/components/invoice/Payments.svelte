@@ -4,7 +4,7 @@
 	
 </script>
 
-<div class="payments-wrapper">
+<div class="wrapper narrow">
 	<div class="reminder">
 		<p>Please pay before <span>{data.bill.dateDue}</span></p>
 	</div>
@@ -83,7 +83,7 @@
 
 
 <style lang='scss'>
-	div.payments-wrapper {
+	div.wrapper {
 		padding: 1.2rem 2.5rem;
 		display: flex;
 		flex-direction: column;

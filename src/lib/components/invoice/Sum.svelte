@@ -4,7 +4,7 @@
 	
 </script>
 
-<div class="container">
+<div class="wrapper narrow">
 	{#each bill.credits as {label, date, subtotal, amount}}
 		<div>
 			<p>{label} <span>{date ? date : ''}{subtotal ? 'Subtotal ' + currency(subtotal) : ''}</span></p>
@@ -28,8 +28,7 @@
 </div>
 
 <style lang='scss'>
-	div.container {
-		padding: 0 2.5rem;
+	div.wrapper {
 		width: 100%;
 		
 		div {
