@@ -14,7 +14,7 @@
 			<h3>{billItem.qty}<span class="unit">{billItem.unit}</span></h3>
 			<p class="description">{billItem.unitNote}</p>
 		</div>
-		<h3>{currency(billItem.price)}</h3>
+		<h3 class="price">{currency(billItem.price)}</h3>
 	</div>
 </div>
 
@@ -24,7 +24,7 @@
 		
 		display: flex;
 		justify-content: space-between;
-		gap: 1rem;
+		gap: 0.5rem;
 		
 		padding-top: 1.2rem;
 		margin-bottom: var(--bottom-gap);
@@ -49,6 +49,7 @@
 		
 		div.product {
 			flex-basis: 55%;
+			
 			h3 {
 				font-weight: 450;
 			}
@@ -58,24 +59,27 @@
 				-webkit-line-clamp: 1;
 				-webkit-box-orient: vertical;
 			}
+			p.description {
+				display: -webkit-box;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
+			}
 		}
 		div.price {
 			display: flex;
-			justify-content: space-between;
+			justify-content: flex-end;
 			flex-grow: 1;
 			flex-wrap: wrap-reverse;
-			
 			text-align: right;
 			
 			div.details {
 				display: flex;
 				flex-direction: column;
 				flex-wrap: wrap;
-				flex-grow: 1;				
+				align-items: flex-end;
 			}
-			h3 {
-				flex-grow: 2;
-				margin-left: 1rem;
+			h3.price {
+				flex-basis: 5.8rem;
 			}
 		}
 	}

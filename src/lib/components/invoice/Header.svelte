@@ -13,7 +13,7 @@
 	<h1 class="logo">Light<em>Dance</em></h1>
 	
 	<div class="web-presentation">
-		<div class="card">
+		<div class="card narrow-cards">
 			<picture>
 				<source srcset="https://large-assets.notnotjake.com/images/decoration.png">
 				<img src="https://large-assets.notnotjake.com/images/decoration.png" alt="">

@@ -16,7 +16,7 @@
 		},
 		customer: {
 			id: 'AH',
-			name: 'Advance Automation & Security',
+			name: 'Swole Chef Meal Prep',
 			address: '14543 Bud Lane, Glen Allen VA 23059',
 			contact: '(804) 687 6884',
 			paymentPref: 'check'
@@ -33,6 +33,14 @@
 					unitNote: 'Billed Monthly',
 					price: 245.00
 				}
+				// {
+				// 	title: 'Tech Consulting',
+				// 	description: 'Training and support on new platforms',
+				// 	unit: 'Hrs',
+				// 	qty: 2.5,
+				// 	unitNote: '$70/hr',
+				// 	price: 175
+				// }
 			],
 			credits: [
 				// {
@@ -47,7 +55,7 @@
 				// 	amount: -245
 				// }
 			],
-			due: 245.00,
+			due: 3245.99,
 			dateDue: 'june 22, 2023'
 		},
 		payment: {
@@ -66,7 +74,7 @@
 	}
 	
 	const currency = function ( n ) {
-		let s = '$' + parseInt(n).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})
+		let s = '$' + parseFloat(n).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})
 		return s
 	}
 	
@@ -105,14 +113,6 @@
 	</div>
 </div>
 
-<div id="controls" 
-	draggable=true
-	on:dragstart={handleDragStart}
->
-	<div class="drag-handle"></div>
-	<h1>Edit</h1>
-</div>
-
 
 <style lang='scss'>
 	html, body {
@@ -125,35 +125,11 @@
 		text-align: center;
 		padding: 2.3rem 0;
 	}
-	
-	#controls {
-		position: absolute;
-		top: 2rem;
-		left: 2rem;
-		width: 16rem;
-		min-height: 3rem;
-		background: hsl(0,0%,100%);
-		border-radius: 0.5rem;
-		border: 0.08rem solid hsl(0,0%,89%);
 		
-		div.drag-handle {
-			width: 3rem;
-			height: 0.4rem;
-			margin: 0.5rem auto;
-			background: #737373;
-			border-radius: 2rem;
-			cursor: grab;
-			transition: background 0.1s;
-		}
-		div.drag-handle:hover {
-			background: #373634;
-		}
-	}
-	
 	div.card {
 		/* max-width: 42rem; */
-		/* max-width: var(--width); */
-		width: 50vw;
+		max-width: var(--width);
+		/* width: 50vw; */
 		min-height: 100lvh;
 		margin: auto;
 		
@@ -168,7 +144,7 @@
 		}
 		
 		div.bill {
-			padding: 1.8rem 2.5rem;
+			padding: 1.6rem 2.5rem 1rem;
 		}
 		
 		div.card-accent {

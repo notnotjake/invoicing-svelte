@@ -1,6 +1,6 @@
 <script>
 	export let data
-	export let currency
+	// export let currency
 	
 	let action = ''
 	if (data.type === 'invoice') {
@@ -11,12 +11,15 @@
 	}
 	
 	function dollars ( s ) {
-		
-		return d
+		let d = parseFloat(s).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})
+		d = d.split('.')
+		return d[0]
 	}
 	function cents ( s ) {
-		
-		return c
+		let c = parseFloat(s).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})
+		c = c.split('.')
+		console.log(c)
+		return c[1]
 	}
 </script>
 
@@ -27,7 +30,7 @@
 		</svg>
 	</span>
 	<div class="wrapper">
-		<p class="amount"><span class="dollar">{currency(data.bill.due)}.</span><span class="cent">{data.bill.due}</span> {action.toUpperCase()} <span class="customer">{data.customer.name}</span></p>
+		<p class="amount"><span class="dollar">${dollars(data.bill.due)}.</span><span class="cent">{cents(data.bill.due)}</span> {action.toUpperCase()} <span class="customer">{data.customer.name}</span></p>
 		<p class="customer-info">{data.customer.address} • {data.customer.contact}</p>
 	</div>
 	<span class="border">

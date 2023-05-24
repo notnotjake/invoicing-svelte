@@ -13,11 +13,17 @@
 	<a href="javascript:window.print()">Print Invoice</a>
 	<a href="mailto:billing@lightdance.design?subject=Invoice {data.customer.id}-{data.project}{data.bill.id} - Question">Contact</a>
 	
-	<summary>	
-		<p>Alternate Payment Methods</p>
-		<details>
+	<details>
+		<summary>
+			<p>Alternate Payment Methods <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg">
+				  <g stroke="#000" fill="none" fill-rule="evenodd">
+					<circle stroke-width="1.5" cx="7" cy="7" r="6.25"/>
+					<path stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" d="m3.893 5.9 3.181 3.02 3.181-3.02"/>
+				  </g>
+				</svg></p>
+		</summary>
+		<div class="details-expand">
 			<div class="line"></div>
-			
 			<div class="container">
 				<div class="check">
 					<h3>Check</h3>
@@ -71,8 +77,8 @@
 					</div>
 				</div>
 			</div>
-		</details>
-	</summary>
+		</div>
+	</details>
 </div>
 
 
@@ -140,63 +146,86 @@
 		}		
 	}
 	
-	summary {
-		> p {
+	details {
+		margin-top: 6rem;
+		list-style: none;
+		summary {
+			list-style: none;
+		}
+		summary::-webkit-details-marker {
+			display: none;
+		}
+		summary p {
 			font-weight: 500;
 			text-align: center;
-		}
-		div.line {
-			width: 100%;
-			height: 0.2rem;
-			background: linear-gradient(to right,
-				hsla(0,0%,89%,0) 0%,
-				hsla(0,0%,85%,1) 50%,
-				hsla(0,0%,89%,0) 100%,
-			);
-		}
-		div.container {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 0.6rem;
-			letter-spacing: -0.01em;
-			h3 {
-				font-weight: 600;
+			cursor: pointer;
+			height: 1.3rem;
+			svg {
+				display: inline;
 			}
-			> div {
-				width: 100%;
-				padding: 0.8rem 0.5rem;
-				border: 0.18rem solid #C6C6C6;
-				border-radius: 0.65rem;
-				div {
-					display: flex;
-					gap: 0.3rem;
+		}
+		div.details-expand {
+			opacity: 0;
+			transition: all 1s;
+			div.line {
+				width: calc(100% + 5rem);
+				height: 0.15rem;
+				background: linear-gradient(to right,
+					hsla(0,0%,89%,0) 0%,
+					hsla(0,0%,85%,1) 50%,
+					hsla(0,0%,89%,0) 100%,
+				);
+				margin: 0.8rem 0 2rem -2.5rem;
+			}
+			div.container {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.6rem;
+				letter-spacing: -0.01em;
+				h3 {
+					font-weight: 600;
+				}
+				> div {
 					width: 100%;
-					justify-content: space-between;
-					align-items: center;
-					p:first-child {
-						font-weight: 500;
-						opacity: 0.7;
-						font-size: 0.95rem;
-					}
-					p:last-child {
-						font-weight: 500;
-						font-size: 0.95rem;
-						text-align: right;
-						flex-shrink: 0;
-					}
-					span {
-						flex-grow: 1;
-						height: 1rem;
+					padding: 0.8rem 0.5rem;
+					border: 0.18rem solid #C6C6C6;
+					border-radius: 0.65rem;
+					div {
 						display: flex;
+						gap: 0.7rem;
+						width: 100%;
+						justify-content: space-between;
 						align-items: center;
-						svg {
-							width: 100%;
-							height: 3px;
-							stroke: rgba(68, 68, 68, 0.18);
+						p:first-child {
+							font-weight: 500;
+							opacity: 0.7;
+							font-size: 0.95rem;
+						}
+						p:last-child {
+							font-weight: 500;
+							font-size: 0.95rem;
+							text-align: right;
+							flex-shrink: 0;
+						}
+						span {
+							flex-grow: 1;
+							height: 1rem;
+							display: flex;
+							align-items: center;
+							svg {
+								width: 100%;
+								height: 3px;
+								stroke: rgba(68, 68, 68, 0.18);
+							}
 						}
 					}
 				}
 			}
+		}
+	}
+	details[open] {
+		div.details-expand {
+			opacity: 1;
 		}
 	}
 </style>

@@ -55,10 +55,10 @@
 			}
 		}
 		div.due {
-			padding: 0.8rem 0;
+			padding: 1rem 0;
 			display: flex;
 			align-items: center;
-			gap: 2.7rem;
+			gap: 2.4rem;
 			p {
 				font-size: 1.2rem;
 				font-weight: 600;
