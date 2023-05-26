@@ -5,7 +5,8 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"dev-expose": "npm run dev -- --host --port 2323" 
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^2.0.0",

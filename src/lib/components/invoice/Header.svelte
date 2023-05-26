@@ -129,4 +129,17 @@
 			}
 		}
 	}
+	
+	@media print {
+		div.web-presentation {
+			display: none;
+		}
+		h1.logo {
+			padding-top: 0.5rem;
+			padding-bottom: 0rem;
+		}
+		div.info {
+			padding-top: 2.5rem;
+		}
+	}
 </style>

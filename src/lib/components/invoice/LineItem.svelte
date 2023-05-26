@@ -113,4 +113,9 @@
 			}
 		}
 	}
+	@media print {
+		div.item div.price h3.price {
+			flex-basis: 9rem;
+		}
+	}
 </style>

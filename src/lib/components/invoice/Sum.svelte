@@ -78,4 +78,16 @@
 			}
 		}
 	}
+	@media print {
+		div.wrapper {
+			width: 24rem;
+			margin-left: auto;
+		}
+		div.wrapper div.due {
+			gap: 0.5rem;
+		}
+		div.wrapper p.credit {
+			color: #078A00;
+		}
+	}
 </style>

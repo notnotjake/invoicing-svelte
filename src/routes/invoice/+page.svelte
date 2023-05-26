@@ -5,8 +5,8 @@
 	import Sum from '$lib/components/invoice/Sum.svelte'
 	import Payments from '$lib/components/invoice/Payments.svelte'
 	
-	const width = '33rem' // 42rem is pretty good
-	let context = 'web' // Options: web, mail, print
+	// const width = '33rem' // 42rem is pretty good
+	// let context = 'web' // Options: web, mail, print
 	
 	const data = {
 		type: 'invoice',
@@ -90,7 +90,7 @@
 	
 </script>
 
-<div class="card" style="--width:{width};">
+<!-- <div class="card">
 	<div class="card-accent">
 		<div class="border"></div>
 		<div class="gradient"></div>
@@ -107,18 +107,17 @@
 		</div>
 		
 		<Sum bill={data.bill} {currency} />
-		<Payments {context} {data} />
+		<Payments {data} />
 		
 		<p class="emphasis thank-you">Thank You!</p>
 	</div>
-</div>
+</div> -->
 
 
 <style lang='scss'>
-	html, body {
+	/* html, body {
 		background: #F1F2F4;
-	}
-	
+	} */
 	:global(.emphasis) {
 		text-transform: uppercase;
 		color: #C17811;
@@ -133,16 +132,13 @@
 			padding-right: 1rem;
 		}
 	}
-	
 	p.thank-you {
 		text-align: center;
 		padding: 2.3rem 0;
 	}
-		
 	div.card {
-		/* max-width: 42rem; */
-		max-width: var(--width);
-		/* width: 50vw; */
+		/* --width: 33rem; */
+		max-width: 33rem;
 		min-height: 100lvh;
 		margin: auto;
 		
@@ -153,14 +149,11 @@
 		
 		div.container {
 			width: 100%;
-			/* padding: 0 2.6rem; */
 		}
-		
 		div.bill {
 			padding-top: 1.6rem;
 			padding-bottom: 1rem;
 		}
-		
 		div.card-accent {
 			position: absolute;
 			top: 0;
@@ -185,6 +178,20 @@
 					hsl(214, 58%, 90%) 0%, 
 					hsla(214, 58%, 90%, 0) 100%);
 			}
+		}
+	}
+	@media print {
+		div.card {
+			border: none;
+			box-shadow: none;
+			width: 500px;
+			max-width: unset;
+			min-height: 0px;
+			height: 100vh;
+			overflow: hidden;
+		}
+		div.card div.card-accent {
+			display: none;
 		}
 	}
 </style>

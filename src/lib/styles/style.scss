@@ -2,7 +2,8 @@
 *, *::before, *::after {box-sizing: border-box;}
 html, body {height: 100%;}
 // html:focus-within {scroll-behavior: smooth;}
-body {-webkit-font-smoothing: antialiased;min-height: 100vh;
+body {
+	-webkit-font-smoothing: antialiased;min-height: 100vh;
 	// text-rendering: optimizeSpeed;
 }
 p, h1, h2, h3, h4, h5, h6 {overflow-wrap: break-word;}
@@ -21,21 +22,26 @@ html, body {
 	font-family: 'Inter V', 'Inter Var', 'Inter', sans-serif;
 }
 
-
-
 .hide {
 	display: none;
 	// color: hsl(210, 100%, 81%)
 }
-// .emphasis {
-// 	text-transform: uppercase;
-// 	color: #C17811;
-// }
 
-#color-testing-nouse {
-	color: hsl(214, 58%, 90%)
-}
-
-.narrow-cards {
-	width: 21rem;
+@media print {
+	html, body {
+		height:100vh; 
+		margin: 0 !important; 
+		padding: 0 !important;
+		overflow: hidden;
+	}
+	html {
+		font-size: 12px;
+	}
+	body {
+		-webkit-print-color-adjust: exact !important;
+		color-adjust: exact !important;
+	}
+	html, body, div.card {
+		background: white !important;
+	}
 }
