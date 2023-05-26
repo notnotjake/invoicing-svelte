@@ -80,7 +80,7 @@
 	
 	<div class="alternates print">
 		<div class="label">
-			<p>Alternate Payment Methods</p>
+			<p>Payment Methods</p>
 			<div class="line"></div>
 		</div>
 		<div class="container">
@@ -294,7 +294,7 @@
 		}
 		div.wrapper div.reminder {
 			width: 100%;
-			display: flex;
+			display: none;
 			justify-content: flex-end;
 			p {
 				width: 19rem;

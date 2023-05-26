@@ -16,14 +16,14 @@
 		},
 		customer: {
 			id: 'AH',
-			name: 'Swole Chef Meal Prep',
+			name: 'Advance Automation & Security',
 			address: '14543 Bud Lane, Glen Allen VA 23059',
 			contact: '(804) 687 6884',
 			paymentPref: 'check'
 		},
-		project: 'L5',
+		project: 'L6',
 		bill: {
-			id: '013',
+			id: '005',
 			items: [
 				{
 					title: 'Hosting and Maintenance',
@@ -32,30 +32,30 @@
 					qty: 1,
 					unitNote: 'Billed Monthly',
 					price: 245.00
-				},
-				{
-					title: 'Tech Consulting',
-					description: 'Training and support on new platforms',
-					unit: 'Hrs',
-					qty: 2.5,
-					unitNote: '$70/hr',
-					price: 175
 				}
+				// {
+				// 	title: 'Tech Consulting',
+				// 	description: 'Training and support on new platforms',
+				// 	unit: 'Hrs',
+				// 	qty: 2.5,
+				// 	unitNote: '$70/hr',
+				// 	price: 175
+				// }
 			],
 			credits: [
-				{
-					label: '5% Discount',
-					subtotal: 522.5,
-					date: '',
-					amount: -25
-				},
-				{
-					label: 'Deposit (50%)',
-					date: 'Feb 12',
-					amount: -245
-				}
+				// {
+				// 	label: '5% Discount',
+				// 	subtotal: 522.5,
+				// 	date: '',
+				// 	amount: -25
+				// },
+				// {
+				// 	label: 'Deposit (50%)',
+				// 	date: 'Feb 12',
+				// 	amount: -245
+				// }
 			],
-			due: 3245.99,
+			due: 245.00,
 			dateDue: 'june 22, 2023'
 		},
 		payment: {
@@ -67,8 +67,8 @@
 			},
 			ach: {
 				bank: 'Capital One',
-				routing: '41414141414',
-				account: '41414141414141414'
+				routing: '424242424',
+				account: '42424242424'
 			}
 		}
 	}
@@ -86,11 +86,10 @@
 	function handleDragStart (e) {
 		console.log('test')
 	}
-	
-	
+
 </script>
 
-<!-- <div class="card">
+<div class="card">
 	<div class="card-accent">
 		<div class="border"></div>
 		<div class="gradient"></div>
@@ -107,11 +106,12 @@
 		</div>
 		
 		<Sum bill={data.bill} {currency} />
+		<div class="spacer"></div>
 		<Payments {data} />
 		
 		<p class="emphasis thank-you">Thank You!</p>
 	</div>
-</div> -->
+</div>
 
 
 <style lang='scss'>
@@ -192,6 +192,14 @@
 		}
 		div.card div.card-accent {
 			display: none;
+		}
+		div.container {
+			height: calc(100vh - 1in);
+			display: flex;
+			flex-direction: column;
+		}
+		div.spacer {
+			flex-grow: 1;
 		}
 	}
 </style>
