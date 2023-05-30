@@ -1,0 +1,15 @@
+{
+	"baseURL": "https://billing.lightdance.design",
+	"name": "LightDance Billing",
+	"description": "Access your invoices, previous payments, and estimates",
+	"author": "@_notnotjake",
+	"twitter": "_notnotjake",
+	"favicon": "https://large-assets.notnotjake.com/images/site/favicon.png",
+	"image": "",
+	"fathom": {
+		"use": false,
+		"url": "https://cdn.usefathom.com/script.js",
+		"id": "QMSKHICJ"
+	},
+	"feed": false
+}

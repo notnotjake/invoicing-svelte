@@ -29,7 +29,7 @@
 	</span>
 	<div class="wrapper narrow">
 		<p class="amount"><span class="dollar">${dollars(data.bill.due)}.</span><span class="cent">{cents(data.bill.due)}</span> {action.toUpperCase()} <span class="customer">{data.customer.name}</span></p>
-		<p class="customer-info">{data.customer.address} • {data.customer.contact}</p>
+		<p class="customer-info">{data.customer.address} &bull; {data.customer.contact}</p>
 	</div>
 	<span class="border">
 		<svg xmlns="http://www.w3.org/2000/svg">

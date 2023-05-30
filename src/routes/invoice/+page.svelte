@@ -1,4 +1,5 @@
 <script>
+	import site from '$lib/site/data.json'
 	import Header from '$lib/components/invoice/Header.svelte'
 	import Summary from '$lib/components/invoice/Summary.svelte'
 	import LineItem from '$lib/components/invoice/LineItem.svelte'
@@ -87,6 +88,8 @@
 		console.log('test')
 	}
 
+
+	// const pageTitle = `${data.customer.id} ${data.project}${data.bill.id}`
 </script>
 
 <div class="card">
