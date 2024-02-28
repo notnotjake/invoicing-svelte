@@ -1,34 +1,19 @@
 <script>
 	export let data
 	
-	let env = 'web'
-	
-	let webPresentation = ''
-	if (env !== 'web') {
-		webPresentation = 'hide'
+	function dateString ( d ) {
+		return new Date(d).toLocaleString('en-us',{month:"short", day:"numeric", year:"numeric"})
 	}
 </script>
 
 <div id="header" class="wrapper narrow">
 	<h1 class="logo">Light<em>Dance</em></h1>
 	
-	<div class="web-presentation">
-		<div class="card narrow-cards">
-			<picture>
-				<source srcset="https://large-assets.notnotjake.com/images/decoration.png">
-				<img src="https://large-assets.notnotjake.com/images/decoration.png" alt="">
-			</picture>
-			<h1>Thank You!</h1>
-			<h2>You're the best part of our work!</h2>
-			<p>If you need anything, we're here for you.</p>
-		</div>
-	</div>
-	
 	<div class="info">
 		<h2>{data.type}</h2>
 		<p id="customer">{data.customer.id}</p>
 		<p id="id"><strong>{data.project}</strong>{data.bill.id}</p>
-		<p id="date" class="emphasis">{data.date.string}</p>
+		<p id="date" class="emphasis">{dateString(data.date)}</p>
 	</div>
 </div>
 

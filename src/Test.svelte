@@ -1,4 +1,10 @@
-<h1>Testing! <span>2</span></h1>
+<a href="/invoice">Open Invoice</a>
+
+<nav>
+	<button>Invoices</button>
+	<button>Customers</button>
+	<button>Projects</button>
+</nav>
 
 <style lang="scss">
 	h1 {

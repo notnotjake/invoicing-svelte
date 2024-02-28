@@ -2,6 +2,10 @@
 	export let billItem	
 	export let currency
 	
+	function total ( qty, price ) {
+		return qty * price
+	}
+	
 </script>
 
 <div class="item">

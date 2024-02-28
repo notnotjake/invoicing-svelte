@@ -6,15 +6,11 @@
 	import Sum from '$lib/components/invoice/Sum.svelte'
 	import Payments from '$lib/components/invoice/Payments.svelte'
 	
-	// const width = '33rem' // 42rem is pretty good
-	// let context = 'web' // Options: web, mail, print
+	import { PUBLIC_PAYMENT_ACH_BANK, PUBLIC_PAYMENT_ACH_ROUTING, PUBLIC_PAYMENT_ACH_ACCOUNT, PUBLIC_PAYMENT_CHECK_PAYABLE, PUBLIC_PAYMENT_CHECK_MAILTO } from '$env/static/public'
 	
 	const data = {
 		type: 'invoice',
-		date: {
-			iso: '5/22/2023',
-			string: 'may 22, 2023'
-		},
+		date: '2/27/2024',
 		customer: {
 			id: 'AH',
 			name: 'Advance Automation & Security',
@@ -22,31 +18,38 @@
 			contact: '(804) 687 6884',
 			paymentPref: 'check'
 		},
-		project: 'L6',
+		project: 'E3',
 		bill: {
 			id: '005',
 			items: [
 				{
-					title: 'Hosting and Maintenance',
-					description: 'Email and Website',
-					unit: 'Mo',
-					qty: 1,
-					unitNote: 'Billed Monthly',
-					price: 245.00
+					title: 'Networking Installation',
+					description: 'Evergreen',
+					unit: 'drops',
+					qty: '22',
+					unitNote: '$8.50',
+					price: 187
+				},
+				{
+					title: 'Networking Installation',
+					description: 'Evergreen',
+					unit: 'drops',
+					qty: '22',
+					unitNote: '$8.50',
+					price: 91.566
+				},
+				{
+					title: 'Networking Installation',
+					description: 'Evergreen',
+					unit: 'drops',
+					qty: '22',
+					unitNote: '$8.50',
+					price: 1359.6796
 				}
-				// {
-				// 	title: 'Tech Consulting',
-				// 	description: 'Training and support on new platforms',
-				// 	unit: 'Hrs',
-				// 	qty: 2.5,
-				// 	unitNote: '$70/hr',
-				// 	price: 175
-				// }
 			],
 			credits: [
 				// {
 				// 	label: '5% Discount',
-				// 	subtotal: 522.5,
 				// 	date: '',
 				// 	amount: -25
 				// },
@@ -56,22 +59,35 @@
 				// 	amount: -245
 				// }
 			],
-			due: 245.00,
-			dateDue: 'june 22, 2023'
+			dateDue: 'march 27, 2024'
 		},
 		payment: {
 			url: '/',
 			check: {
 				valid: true,
-				payable: 'LightDance Design',
-				mailto: '14543 Bud Ln<br/>Glen Allen VA 23059'
+				payable: PUBLIC_PAYMENT_CHECK_PAYABLE,
+				mailto: PUBLIC_PAYMENT_CHECK_MAILTO
 			},
 			ach: {
-				bank: 'Capital One',
-				routing: '424242424',
-				account: '42424242424'
+				bank: PUBLIC_PAYMENT_ACH_BANK,
+				routing: PUBLIC_PAYMENT_ACH_ROUTING,
+				account: PUBLIC_PAYMENT_ACH_ACCOUNT
 			}
 		}
+	}
+	
+	const billTotal = function ( billable, credits ) {
+		let totalBillable = 0
+		let totalCredits = 0
+		
+		billable.forEach( i => {
+			totalBillable += i.price
+		})
+		credits.forEach( i => {
+			totalCredits += i.amount
+		})
+		
+		return totalBillable + totalCredits
 	}
 	
 	const currency = function ( n ) {
@@ -79,17 +95,6 @@
 		return s
 	}
 	
-	
-	
-	/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	Rudamentary Drag/Drop
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-	function handleDragStart (e) {
-		console.log('test')
-	}
-
-
-	// const pageTitle = `${data.customer.id} ${data.project}${data.bill.id}`
 </script>
 
 <div class="card">
@@ -99,7 +104,7 @@
 	</div>
 	<div class="container">
 		<Header {data}  />
-		<Summary {data} {currency} />
+		<Summary {data} {currency} {billTotal} />
 			
 		
 		<div class="bill wrapper narrow">
@@ -108,7 +113,7 @@
 			{/each}
 		</div>
 		
-		<Sum bill={data.bill} {currency} />
+		<Sum bill={data.bill} {currency} {billTotal} />
 		<div class="spacer"></div>
 		<Payments {data} />
 		

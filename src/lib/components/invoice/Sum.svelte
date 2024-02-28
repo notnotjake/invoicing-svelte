@@ -1,13 +1,16 @@
 <script>	
 	export let bill
 	export let currency
+	export let billTotal
+	
+	let due = billTotal(bill.items, bill.credits)
 	
 </script>
 
 <div class="wrapper narrow">
 	{#each bill.credits as {label, date, subtotal, amount}}
 		<div>
-			<p>{label} <span>{date ? date : ''}{subtotal ? 'Subtotal ' + currency(subtotal) : ''}</span></p>
+			<p>{label}<span>{date ? ' ' + date : ''}</span></p>
 			{#if amount < 0}
 				<p class="credit">({currency(amount * -1)})</p>
 			{:else}
@@ -23,7 +26,7 @@
 			  <path fill-rule="evenodd" stroke-dasharray="4,10" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M2 1.5h9999"/>
 			</svg>
 		</span>
-		<p class="amount">{currency(bill.due)}</p>
+		<p class="amount">{currency(due)}</p>
 	</div>
 </div>
 
