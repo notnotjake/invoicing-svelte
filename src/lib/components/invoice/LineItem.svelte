@@ -2,8 +2,14 @@
 	export let billItem	
 	export let currency
 	
-	function total ( qty, price ) {
-		return qty * price
+	function total ( i ) {
+		if ( i.price && i.price > 0) {
+			return i.price
+		}
+		else {
+			return i.unitPrice * i.qty
+		}
+		return 'error'
 	}
 	
 </script>
@@ -18,7 +24,7 @@
 			<h3>{billItem.qty}<span class="unit">{billItem.unit}</span></h3>
 			<p class="description">{billItem.unitNote}</p>
 		</div>
-		<h3 class="price">{currency(billItem.price)}</h3>
+		<h3 class="price">{currency(total(billItem))}</h3>
 	</div>
 </div>
 

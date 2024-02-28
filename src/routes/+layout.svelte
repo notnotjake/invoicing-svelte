@@ -54,9 +54,8 @@
 	
 	<!-- Appearance -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+
 	
-	<link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/notnotjake/utils.reset.css/main/reset.min.css"> <!-- CSS Reset github.com/notnotjake/utils.reset.css) -->
-		
 	<link rel="apple-touch-icon" href="{site.favicon}">
 	<link rel="icon" type="image/png" sizes="271x271" href="{site.favicon}">
 	<!-- Appearance [End] -->

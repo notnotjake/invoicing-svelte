@@ -35,15 +35,16 @@
 					description: 'Evergreen',
 					unit: 'drops',
 					qty: '22',
-					unitNote: '$8.50',
-					price: 91.566
+					unitPrice: 8.50,
+					unitNote: '$8.50'
 				},
 				{
 					title: 'Networking Installation',
 					description: 'Evergreen',
 					unit: 'drops',
-					qty: '22',
 					unitNote: '$8.50',
+					unitPrice: 61.804,
+					qty: '22',
 					price: 1359.6796
 				}
 			],
@@ -81,7 +82,12 @@
 		let totalCredits = 0
 		
 		billable.forEach( i => {
-			totalBillable += i.price
+			if ( i.price && i.price > 0 ) {
+				totalBillable += i.price
+			}
+			else {
+				totalBillable += (i.unitPrice * i.qty)
+			}
 		})
 		credits.forEach( i => {
 			totalCredits += i.amount
