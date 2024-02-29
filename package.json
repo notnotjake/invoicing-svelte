@@ -6,7 +6,7 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
-		"dev-expose": "npm run dev -- --host --port 2323" 
+		"dev-expose": "npm run dev -- --host --port 8080"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^2.0.0",
@@ -16,5 +16,8 @@
 		"svelte-preprocess": "^5.0.3",
 		"vite": "^4.3.0"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"pocketbase": "^0.21.1"
+	}
 }
